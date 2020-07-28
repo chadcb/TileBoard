@@ -5,7 +5,7 @@
 .idea
 *.map
 images/slides/london.png
-styles/custom.css
+#styles/custom.css
 /includes/
 /includes/*
 images/bg4.png

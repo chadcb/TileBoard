@@ -602,6 +602,34 @@
          </div>
       </div>
 
+      <!-- GARAGE COVER TYPE TO MIMIC HOME ASSISTANT UP/DOWN ARROWS -->
+      <div ng-if="item.type === TYPES.GARAGE_COVER"
+           class="item-entity-container">
+
+         <div class="item-entity">
+            <div class="item-cover-garage--button -open"
+                 ng-class="{'-disabled': entity.state === 'open' && (!entity.attributes.current_position || entity.attributes.current_position === 100)}"
+                 ng-click="sendCover('open_cover', item, entity)">
+               <i class="mdi mdi-arrow-up"></i>
+            </div>
+
+            <div class="item-cover-garage--icon">
+               <i class="mdi"
+                  ng-class="{
+                     'mdi-garage -close': entity.state === 'closed',
+                     'mdi-garage-open': entity.state !== 'closed'
+                  }">
+               </i>
+            </div>
+
+            <div class="item-cover--button -close"
+                 ng-class="{'-disabled': entity.state === 'closed'}"
+                 ng-click="sendCover('close_cover', item, entity)">
+               <i class="mdi mdi-arrow-down"></i>
+            </div>
+         </div>
+      </div>
+
       <div ng-if="item.type === TYPES.COVER_TOGGLE"
            class="item-entity-container">
 
@@ -1088,17 +1116,17 @@
                <span ng-if="(_unit = entityUnit(item, entity))"
                      class="item-climate--target--unit" ng-bind="_unit"></span>
             </div>
-            <div class="item-climate--mode" ng-if="(_options = getClimateOptions(item, entity))"
+            <div class="item-climate--mode" ng-if="entity.attributes.hvac_action"
                  ng-click="openSelect(item)">
-               <span ng-bind="getClimateCurrentOption(item, entity)"></span>
+               <span ng-bind="entity.attributes.hvac_action"></span>
             </div>
          </div>
 
          <div ng-if="selectOpened(item)" class="item-select"
-              ng-style="itemSelectStyles(entity, _options)">
+              ng-style="itemSelectStyles(entity, entity.attributes.operation_list)">
 
             <div class="item-select--option"
-                 ng-repeat="option in _options track by $index"
+                 ng-repeat="option in entity.attributes.hvac_modes track by $index"
                  ng-class="{'-active': option === entity.state}"
                  ng-click="setClimateOption($event, item, entity, option)">
                <span ng-bind="option"></span>
