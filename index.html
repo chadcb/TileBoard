@@ -603,30 +603,25 @@
       </div>
 
       <!-- GARAGE COVER TYPE TO MIMIC HOME ASSISTANT UP/DOWN ARROWS -->
-      <div ng-if="item.type === TYPES.GARAGE_COVER"
-           class="item-entity-container">
+      <div ng-if="item.type === TYPES.GARAGE_COVER" class="item-entity-container">
 
-         <div class="item-entity">
-            <div class="item-cover-garage--button -open"
+         <div class="item-entity">    
+            <span class="item-cover--button -open mdi mdi-arrow-up"
                  ng-class="{'-disabled': entity.state === 'open' && (!entity.attributes.current_position || entity.attributes.current_position === 100)}"
                  ng-click="sendCover('open_cover', item, entity)">
-               <i class="mdi mdi-arrow-up"></i>
-            </div>
+            </span>
 
-            <div class="item-cover-garage--icon">
-               <i class="mdi"
-                  ng-class="{
-                     'mdi-garage -close': entity.state === 'closed',
-                     'mdi-garage-open': entity.state !== 'closed'
-                  }">
-               </i>
-            </div>
-
-            <div class="item-cover--button -close"
+            <!-- <div class="item-cover-garage--icon"> -->
+            <span class="item-entity--icon mdi"
+               ng-class="{
+                  'mdi-garage -close': entity.state === 'closed',
+                  'mdi-garage-open': entity.state !== 'closed'
+               }">
+            </span>
+            <span class="item-cover--button -close mdi mdi-arrow-down"
                  ng-class="{'-disabled': entity.state === 'closed'}"
                  ng-click="sendCover('close_cover', item, entity)">
-               <i class="mdi mdi-arrow-down"></i>
-            </div>
+            </span>
          </div>
       </div>
 
@@ -1117,7 +1112,12 @@
                      class="item-climate--target--unit" ng-bind="_unit"></span>
             </div>
             <div class="item-climate--mode" ng-if="entity.attributes.hvac_action"
-                 ng-click="openSelect(item)">
+                 ng-click="openSelect(item)"
+                 ng-class="{
+                  'hvac-mode--cooling': entity.state === 'cooling',
+                  'hvac-mode--idle': entity.state === 'idle',
+                  'hvac-mode--heating': entity.state === 'heating',
+               }">
                <span ng-bind="entity.attributes.hvac_action"></span>
             </div>
          </div>
