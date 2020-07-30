@@ -604,26 +604,28 @@
 
       <!-- GARAGE COVER TYPE TO MIMIC HOME ASSISTANT UP/DOWN ARROWS -->
       <div ng-if="item.type === TYPES.GARAGE_COVER" class="item-entity-container">
+         <div class="item-entity">
 
-         <div class="item-entity">    
             <span class="item-cover--button -open mdi mdi-arrow-up"
                  ng-class="{'-disabled': entity.state === 'open' && (!entity.attributes.current_position || entity.attributes.current_position === 100)}"
                  ng-click="sendCover('open_cover', item, entity)">
             </span>
 
-            <!-- <div class="item-cover-garage--icon"> -->
             <span class="item-entity--icon mdi"
                ng-class="{
                   'mdi-garage -close': entity.state === 'closed',
                   'mdi-garage-open': entity.state !== 'closed'
                }">
             </span>
+
             <span class="item-cover--button -close mdi mdi-arrow-down"
                  ng-class="{'-disabled': entity.state === 'closed'}"
                  ng-click="sendCover('close_cover', item, entity)">
             </span>
+
          </div>
       </div>
+      <!-- END: GARAGE COVER TYPE TO MIMIC HOME ASSISTANT UP/DOWN ARROWS -->
 
       <div ng-if="item.type === TYPES.COVER_TOGGLE"
            class="item-entity-container">
