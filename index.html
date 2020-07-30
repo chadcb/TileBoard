@@ -1112,13 +1112,14 @@
                      class="item-climate--target--unit" ng-bind="_unit"></span>
             </div>
             <div class="item-climate--mode" ng-if="entity.attributes.hvac_action"
-                 ng-click="openSelect(item)"
-                 ng-class="{
-                  'hvac-mode--cooling': entity.state === 'cooling',
-                  'hvac-mode--idle': entity.state === 'idle',
-                  'hvac-mode--heating': entity.state === 'heating',
-               }">
-               <span ng-bind="entity.attributes.hvac_action"></span>
+                 ng-click="openSelect(item)">
+               <span ng-bind="entity.attributes.hvac_action"
+               ng-class="{
+                  'hvac-mode--cooling': entity.attributes.hvac_action === 'cooling',
+                  'hvac-mode--idle': entity.attributes.hvac_action === 'idle',
+                  'hvac-mode--heating': entity.attributes.hvac_action === 'heating',
+               }"
+               ></span>
             </div>
          </div>
 

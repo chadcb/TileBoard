@@ -36,27 +36,11 @@ TODO:
   overflow: visible;
 }
 
-/* Color climate text based on current action/mode */
-.hvac-mode--cooling {
-  color: #2b9af9;
-}
-.hvac-mode--heating {
-  color:orange;
-}
-.hvac-mode--idle {
-  color: #544d4b;
-}
-
 /* Change background color for when light is on
    TODO: Breaks non-homekit themes so probably not doing this one right
  */
  .-theme-homekit .item.-th-light.-on {
   background-color: #FFFFFF; /* Changed from main.css */
-}
-
-/* Change entity icon color to match what Homekit looks like when 'on' */
-.-theme-homekit .item.-on .item-entity--icon {
-  color: #F3C436;
 }
 
 /* Add garage cover background for closed */
@@ -71,6 +55,16 @@ TODO:
  */
  .item-climate--mode {
   text-transform: capitalize;
+}
+/* Color climate text based on current action/mode */
+.hvac-mode--cooling {
+  color: #2b9af9;
+}
+.hvac-mode--heating {
+  color:orange;
+}
+.hvac-mode--idle {
+  color: #544d4b;
 }
 
 /* Attempt to make HOMEKIT bottom menu look more like side menu theme */
@@ -101,11 +95,6 @@ TODO:
   background-color: rgba(0, 0, 0, 0.1);
   opacity: 1;
   color: #fefefe;
-}
-
-/* Center text in bottom of tiles */
-.item-title {
-  text-align: center;
 }
 
 /* Camera Tiles - Round corners */
@@ -155,6 +144,84 @@ camera_stream div {
 
 /* Item Entity Icon Size - Make larger overall */
 .item-entity--icon {
-  font-size: 72px;
-  line-height: 100px;
+  font-size: 100px;
+  line-height: 90px;
+}
+
+
+/* Put Climate info in the middle */
+.item-climate {
+  padding: 40px 3px 0;
+}
+.item-climate--target {
+  font-size: 40px;
+  line-height: normal;
+  /* text-align: center; */
+}
+/* +/- buttons on climate */
+.item-button {
+  font-size: 1.9em;
+  /* padding: 25px 10px; */
+}
+.item-button.-bottom-right {
+  bottom: 10px;
+}
+.item-button.-center-right {
+  bottom: 58px;
+}
+
+/* Text for top of tile */
+.-theme-homekit .item-state {
+  font-size: 1.1em;
+  background: transparent;
+  font-weight: 500;
+  color: #686868;
+  padding: 3px 5px 2px;
+  top: 11px;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  /* text-transform: uppercase; */
+}
+
+/* Center text in bottom of tiles */
+.item-title {
+  text-align: center;
+  /* text-transform: uppercase; */
+}
+
+/* .item-title {
+  position: absolute;
+  text-align: left;
+  padding: 0 7px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 24px;
+  font-weight: 500;
+  text-shadow: none;
+  z-index: 2;
+  overflow: hidden;
+} */
+
+
+/* Change entity icon color to match what Homekit looks like when 'on' */
+.-theme-homekit .item.-on .item-entity--icon {
+  color: #F3C436;
+}
+
+/* Trash Can Icon Color */
+.-theme-homekit .item.-on.-sensor-trash .item-entity--icon {
+  color: #10938D;
+}
+
+/* Recycle Can Icon Color */
+.-theme-homekit .item.-on.-sensor-recycle .item-entity--icon {
+  color: #13AC20;
+}
+
+/* Garage Open color to try and match homekit */
+.-theme-homekit .item.-open .item-entity--icon,
+.-theme-homekit .item.-on.item-entity--icon {
+  color: #F6810F;
 }
