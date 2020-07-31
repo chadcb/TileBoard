@@ -1,12 +1,3 @@
-/* 
-TODO:
-  1. Fix all tile types so when off/on they change to the correct background color
-  2. Garage cover right arrow spacing
-    a. Or, use single arrow based on garage state
-    b. Or, stack arrows on top of each other
-  3. Gauge background needs fixing. Gauge seems to be dynamic calculated and not filling up tile correctly which messes up background color
- */
-
 /* Disable blinking of the clock colon for Pages */
 .clock--colon {
   animation: none; /* Changed from main.css */
@@ -36,9 +27,18 @@ TODO:
   overflow: visible;
 }
 
-/* Change background color for when light is on
-   TODO: Breaks non-homekit themes so probably not doing this one right
- */
+/* .-small-sensor-tile .item-entity {
+    position: absolute;
+    height: 72px;
+    line-height: 72px;
+    top: calc(50% - 45px);
+    left: 0;
+    right: 0;
+    z-index: 2;
+    overflow: hidden;
+  } */
+
+/* Change background color for when light is on */
  .-theme-homekit .item.-th-light.-on {
   background-color: #FFFFFF; /* Changed from main.css */
 }
@@ -51,7 +51,6 @@ TODO:
 
 /* Capitilize first letter of hvac mode on climate tile
    idle becomes "Idle", etc...
-   TODO: Add color to mode based on which mode is in use
  */
  .item-climate--mode {
   text-transform: capitalize;
@@ -65,6 +64,24 @@ TODO:
 }
 .hvac-mode--idle {
   color: #544d4b;
+}
+/* Put Climate info in the middle */
+.item-climate {
+  padding: 40px 3px 0;
+}
+.item-climate--target {
+  font-size: 40px;
+  line-height: normal;
+}
+/* +/- buttons on climate */
+.item-button {
+  font-size: 1.9em;
+}
+.item-button.-bottom-right {
+  bottom: 10px;
+}
+.item-button.-center-right {
+  bottom: 58px;
 }
 
 /* Attempt to make HOMEKIT bottom menu look more like side menu theme */
@@ -148,26 +165,10 @@ camera_stream div {
   line-height: 90px;
 }
 
-
-/* Put Climate info in the middle */
-.item-climate {
-  padding: 40px 3px 0;
-}
-.item-climate--target {
-  font-size: 40px;
-  line-height: normal;
-  /* text-align: center; */
-}
-/* +/- buttons on climate */
-.item-button {
-  font-size: 1.9em;
-  /* padding: 25px 10px; */
-}
-.item-button.-bottom-right {
-  bottom: 10px;
-}
-.item-button.-center-right {
-  bottom: 58px;
+/* Item Entity Icon Size Small - For half size tiles */
+/* Item Entity Icon Size - Make larger overall */
+.-small-sensor-tile .item-entity--icon {
+  font-size: 50px;
 }
 
 /* Text for top of tile */
@@ -181,28 +182,17 @@ camera_stream div {
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
-  /* text-transform: uppercase; */
 }
 
 /* Center text in bottom of tiles */
 .item-title {
   text-align: center;
-  /* text-transform: uppercase; */
 }
 
-/* .item-title {
-  position: absolute;
-  text-align: left;
-  padding: 0 7px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 24px;
-  font-weight: 500;
-  text-shadow: none;
-  z-index: 2;
-  overflow: hidden;
-} */
+.-small-sensor-tile .item-title {
+  text-align: center;
+  font-size: 10px;
+}
 
 
 /* Change entity icon color to match what Homekit looks like when 'on' */
@@ -224,4 +214,12 @@ camera_stream div {
 .-theme-homekit .item.-open .item-entity--icon,
 .-theme-homekit .item.-on.item-entity--icon {
   color: #F6810F;
+}
+
+/* Quick hack for unknown states to dim tile */
+.-theme-homekit .item.-unknown,
+.-theme-homekit .item.-disarmed,
+.-theme-homekit .item.-off {
+  color: #544d4b;
+  background: linear-gradient(to right bottom, rgba(253, 251, 249, 0.95), rgba(245, 245, 245, 0.8));
 }
