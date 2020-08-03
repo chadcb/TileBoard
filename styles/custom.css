@@ -53,7 +53,8 @@
    idle becomes "Idle", etc...
  */
  .item-climate--mode {
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
+  text-transform: lowercase;
 }
 /* Color climate text based on current action/mode */
 .hvac-mode--cooling {
