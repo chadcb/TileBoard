@@ -211,6 +211,11 @@ camera_stream div {
   color: #13AC20;
 }
 
+/* Yard Waste Icon Color */
+.-theme-homekit .item.-on.-sensor-yard-waste .item-entity--icon {
+  color: #B5651D;
+}
+
 /* Garage Open color to try and match homekit */
 .-theme-homekit .item.-open .item-entity--icon,
 .-theme-homekit .item.-on.item-entity--icon {
