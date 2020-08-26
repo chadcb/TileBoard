@@ -169,7 +169,7 @@ camera_stream div {
 /* Item Entity Icon Size Small - For half size tiles */
 /* Item Entity Icon Size - Make larger overall */
 .-small-sensor-tile .item-entity--icon {
-  font-size: 50px;
+  font-size: 70px;
 }
 
 /* Text for top of tile */
@@ -214,6 +214,11 @@ camera_stream div {
 /* Yard Waste Icon Color */
 .-theme-homekit .item.-on.-sensor-yard-waste .item-entity--icon {
   color: #B5651D;
+}
+
+/* X/Y Day Icon Color */
+.-theme-homekit .item.-sensor-xy-day .item-entity--icon {
+  color: #F3C436;
 }
 
 /* Garage Open color to try and match homekit */

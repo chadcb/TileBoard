@@ -792,7 +792,7 @@
            class="item-entity-container">
          <div class="item-list">
             <div class="item-list--item"
-                 ng-repeat="line in item.list track by $index">
+                 ng-repeat="line in item.list track by $index" ng-if="listField('value', item, line) !== '!hideme'">
                <div class="item-list--name">
                   <i class="mdi" ng-class="listField('icon', item, line)" ng-if="line.icon"></i>
                   <span ng-bind="listField('title', item, line)"></span>
